@@ -1,0 +1,109 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html layout:decorator="layout" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Project Registration</title>
+</head>
+<body>
+<section layout:fragment="header">
+    <div class="ui large breadcrumb">
+        <a href="/" class="section">Dashboard</a>
+        <i class="right chevron icon divider"></i>
+        <a href="/projects" class="section">Projets</a>
+        <i class="right chevron icon divider"></i>
+        <a class="active section">Project Registration</a>
+    </div>
+
+</section>
+<div layout:fragment="content">
+    <div class="content">
+        <div class="ui center aligned middle aligned doubling stackable container grid">
+            <div class="row">
+                <div class="ten wide column">
+                    <div class="ui stacked segment">
+                        <form class="ui form" data-toggle="validator" method="post" th:action="@{/projects/save}"
+                              th:object="${project}">
+                            <input th:field="*{id}" type="hidden"/>
+                            <h4 class="ui dividing header">Projet</h4>
+                            <div class="two fields">
+                                <div class="field">
+                                    <label for="Province">Province</label>
+                                    <input class="form-control" id="province"  th:field="*{province}" type="text"/>
+                                </div>
+                                <div class="field">
+                                    <label for="Commune">Commune</label>
+                                    <input class="form-control" id="commune"  th:field="*{commune}" type="text"/>
+                                </div>
+                            </div>
+                            <div class="two fields">
+                                <div class="field">
+                                    <label for="Consistance">Consistance du Projet</label>
+                                    <textarea rows="2" id="consistance"  th:field="*{consistance}" type="text"></textarea>
+                                </div>
+                                <div class="field">
+                                    <label for="Situation">Situation</label>
+                                    <input class="form-control" id="situation"  th:field="*{situation}"  type="text"/>
+                                </div>
+
+                            </div>
+                            <div class="two fields">
+                                <div class="field">
+                                    <label for="Petitionnaire">Pétitionnaire</label>
+                                    <input class="form-control" id="petitionnaire"  th:field="*{petitionnaire}" type="text"/>
+                                </div>
+                                <div class="field">
+                                    <label for="Architecte">Architecte</label>
+                                    <input class="form-control" id="architecte"  th:field="*{architecte}" type="text"/>
+                                </div>
+
+                            </div>
+                            <div class="two fields">
+                                <div class="field">
+                                    <label for="IGT_BET">IGT/BET</label>
+                                    <input class="form-control" id="igt_bet"  th:field="*{igt_bet}"  type="text"/>
+                                </div>
+                                <div class="field">
+                                    <label for="Requisition">Réquisition</label>
+                                    <input class="form-control" id="requisition"  th:field="*{rf_requisition}"  type="text"/>
+                                </div>
+
+                            </div>
+                            <div class="two fields">
+                                <div class="field">
+                                    <label for="tf">Titre Foncier</label>
+                                    <input class="form-control" id="tf"   th:field="*{num_titre_foncier}" type="text"/>
+                                </div>
+                                <div class="field">
+                                    <label for="cat_proj">Type de projet</label>
+                                    <select id="cat_proj" class="ui dropdown" th:field="*{cat_proj}">
+                                        <option value="GPU">GPU</option>
+                                        <option value="GPR">GPR</option>
+                                        <option value="PPU">PPU</option>
+                                        <option value="PPR">PPR</option>
+                                        <option value="Hoc">Ad-Hoc</option>
+                                        <option value="Dérogation">Dérogation</option>
+                                    </select>
+                                </div>
+
+                            </div>
+                            <div class=" field">
+                                <div class="field">
+                                    <label for="Observation">Observation</label>
+                                    <textarea rows="4" id="observation"  th:field="*{observation}" type="text"></textarea>
+                                </div>
+
+                            </div>
+
+                            <button class="ui compact labeled blue  icon button" name ="save" type ="submit" value="Sauvegarder">
+                                <i class="plus icon"></i> Sauvegarder </button>
+                        </form>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div></div>
+</div>
+</body>
+</html>

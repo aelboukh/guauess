@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>GUAUESS</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/monstyle1.css" media="screen" charset="utf-8" />
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body style="background-image: url('/images/bg.jpg');">
+<header class="ui secondary twitter menu">
+    <nav class="right item">
+        <div class="ui  buttons">
+            <div class="ui small teal login button">Se connecter</div>
+        </div>
+    </nav>
+</header>
+<!-- HERO -->
+<section id="hero">
+    <div class="ui text container">
+        <h1 class="ui teal header">GUAUESS</h1>
+    </div>
+</section>
+
+
+    <!-- MODALS -->
+<section class="modals">
+    <div class="ui small login modal">
+        <i class="close teal icon"></i>
+        <div class="header">
+            <h2 class="ui teal header">Se connecter</h2>
+        </div>
+        <div class="content">
+            <div class="ui center aligned middle aligned doubling stackable container grid">
+                <div class="row">
+                    <div class="ten wide column">
+                        <div class="ui stacked segment">
+                            <form th:action="@{/login}" class="ui form" method="post">
+                                <div class="field">
+                                    <div class="ui left icon input">
+                                        <i class="user icon"></i>
+                                        <input type="text" name="username" id="username" value="" placeholder="Nom d'utilisateur"/>
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <div class="ui left icon input">
+                                        <i class="lock icon"></i>
+                                        <input type="password" name="password" id="password" value="" placeholder="Mot de passe"/>
+                                    </div>
+                                </div>
+
+                                <button class="ui compact labeled teal login icon button" name ="login" type ="submit" value="Login">
+                                    <i class="sign in icon"></i> Se connecter </button>
+
+                            </form>
+                        </div>
+                        <div th:if="${param.error}">
+                            <div class="ui red message">
+                                <li>Nom d'utilisateur ou mot de passe incorrect!</li>
+                            </div>
+                        </div>
+                    </div>
+        </div>
+            </div></div></div>
+</section>
+
+<script
+        src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.14/semantic.min.js"></script>
+<script type="text/javascript" src="/js/monscript.js"></script>
+</body>
+</html>

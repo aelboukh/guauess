@@ -1,0 +1,221 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html layout:decorator="layout" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Projects</title>
+</head>
+<body>
+<section layout:fragment="header">
+    <div class="ui breadcrumb">
+        <a href="/" class="section">Dashboard</a>
+        <div class="divider"> / </div>
+        <a class="active section">Projets</a>
+    </div>
+</section>
+<div layout:fragment="content">
+    <section class="modals">
+        <div class="ui small project modal">
+            <i class="close teal icon"></i>
+            <div class="content">
+                <div class="ui center aligned middle aligned doubling stackable container grid">
+                    <div class="row">
+                        <div class="fifteen wide column">
+                            <div class="ui stacked segment">
+                                <form class="ui form" data-toggle="validator" method="post" th:action="@{/projects/save}"
+                                      th:object="${project}">
+                                    <input th:field="*{id}" type="hidden"/>
+                                    <h4 class="ui dividing header">Projet</h4>
+                                    <div class="two fields">
+                                        <div class="field">
+                                            <label for="Province">Province</label>
+                                            <input class="form-control" id="province" required="true" th:field="*{province}" type="text"/>
+                                        </div>
+                                        <div class="field">
+                                            <label for="Commune">Commune</label>
+                                            <input class="form-control" id="commune" required="true" th:field="*{commune}" type="text"/>
+                                        </div>
+                                    </div>
+                                    <div class="two fields">
+                                        <div class="field">
+                                            <label for="Consistance">Consistance du Projet</label>
+                                            <textarea rows="2" id="consistance" required="true" th:field="*{consistance}" type="text"></textarea>
+                                        </div>
+                                        <div class="field">
+                                            <label for="Situation">Situation</label>
+                                            <input class="form-control" id="situation" required="true" th:field="*{situation}"  type="text"/>
+                                        </div>
+
+                                    </div>
+                                    <div class="two fields">
+                                        <div class="field">
+                                            <label for="Petitionnaire">Pétitionnaire</label>
+                                            <input class="form-control" id="petitionnaire" required="true" th:field="*{petitionnaire}" type="text"/>
+                                        </div>
+                                        <div class="field">
+                                            <label for="Architecte">Architecte</label>
+                                            <input class="form-control" id="architecte" required="true" th:field="*{architecte}" type="text"/>
+                                        </div>
+
+                                    </div>
+                                    <div class="two fields">
+                                        <div class="field">
+                                            <label for="IGT_BET">IGT/BET</label>
+                                            <input class="form-control" id="igt_bet" required="true" th:field="*{igt_bet}"  type="text"/>
+                                        </div>
+                                        <div class="field">
+                                            <label for="Requisition">Réquisition</label>
+                                            <input class="form-control" id="requisition" required="true" th:field="*{rf_requisition}"  type="text"/>
+                                        </div>
+
+                                    </div>
+                                    <div class="two fields">
+                                        <div class="field">
+                                            <label for="tf">Titre Foncier</label>
+                                            <input class="form-control" id="tf" required="true"  th:field="*{num_titre_foncier}" type="text"/>
+                                        </div>
+                                        <div class="field">
+                                            <label for="cat_proj">Type de projet</label>
+                                            <select id="cat_proj" class="ui dropdown" th:field="*{cat_proj}">
+                                                <option value="GPU">GPU</option>
+                                                <option value="GPR">GPR</option>
+                                                <option value="PPU">PPU</option>
+                                                <option value="PPR">PPR</option>
+                                                <option value="Hoc">Ad-Hoc</option>
+                                                <option value="Dérogation">Dérogation</option>
+                                            </select>
+                                        </div>
+
+                                    </div>
+                                    <div class=" field">
+                                        <div class="field">
+                                            <label for="Observation">Observation</label>
+                                            <textarea rows="4" id="observation" required="true" th:field="*{observation}" type="text"></textarea>
+                                        </div>
+
+                                    </div>
+
+                                    <button class="ui compact labeled teal  icon button" name ="save" type ="submit" value="Sauvegarder">
+                                        <i class="plus icon"></i> Sauvegarder </button>
+                                </form>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div></div>
+        </div>
+        <div class="ui small history modal">
+            <i class="close teal icon"></i>
+            <div class="content">
+                <div class="ui center aligned middle aligned doubling stackable container grid">
+                    <div class="row">
+                        <div class="fifteen wide column">
+                            <div class="ui stacked segment">
+
+                                <form class="ui form" data-toggle="validator" method="post" th:object="${history}" th:action="@{/save}">
+                                    <input th:field="*{id}" type="hidden"/>
+                                    <h4 class="ui dividing header">Arrivée</h4>
+                                    <div class="two fields">
+                                        <div class="field">
+                                            <label for="date_arr">Date</label>
+                                            <input class="form-control" id="date_arr" th:field="*{date_arr}"  type="date"/>
+                                        </div>
+                                        <div class="field">
+                                            <label for="num">N°</label>
+                                            <input class="form-control" id="num" th:field="*{num_arr}"  type="text"/>
+                                        </div>
+                                    </div>
+                                    <h4 class="ui dividing header">Examen par la commission</h4>
+                                    <div class="two fields">
+                                        <div class="field">
+                                            <label for="date_arr_com">Date</label>
+                                            <input class="form-control" id="date_arr_com" th:field="*{date_ex_comm}" type="date"/>
+                                        </div>
+                                        <div class="field">
+                                            <label for="num_comm">N°</label>
+                                            <input class="form-control" id="num_comm"  th:field="*{num_comm}" type="text"/>
+                                        </div>
+                                    </div>
+                                    <h4 class="ui dividing header">Envoi à la commision</h4>
+                                    <div class="two fields">
+                                        <div class="field">
+                                            <label for="date_env">Date</label>
+                                            <input class="form-control" id="date_env" th:field="*{date_env}" type="date"/>
+                                        </div>
+                                        <div class="field">
+                                            <label for="num_env">N°</label>
+                                            <input class="form-control" id="num_env" th:field="*{num_env}" type="text"/>
+                                        </div>
+                                    </div>
+                                    <div >
+
+                                        <input  id ="project_id"  th:value="1"/>
+                                    </div>
+                                    <button class="ui compact labeled teal  icon button" name ="save" type ="submit" value="Sauvegarder">
+                                        <i class="plus icon"></i> Sauvegarder </button>
+                                </form>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div></div></div>
+    </section>
+    <div class="pusher">
+        <div class="menu">
+            <h3 class="ui header">Projets</h3>
+
+            <div class="ui  buttons">
+                <div class="ui small teal add project button">Ajouter un projet</div>
+            </div>
+            <table class="ui celled striped table">
+                <thead>
+                <tr>
+                    <th width="40">ID</th>
+                    <th width="40">Fiche d'analyse</th>
+                    <th width="40">Historique</th>
+                    <th width="70">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="row : ${list}">
+                    <td th:text="${row.id}"></td>
+                    <td>
+                        <a th:href="${'#'}"><button class="ui  icon view button"><i class="eye icon" title="Détails" ></i></button></a>
+                    </td>
+                    <td>
+                        <button class="ui  icon add history button"><i class="plus icon" title="Ajouter" ></i></button>
+                        <a th:href="${'#'}"><button class="ui  icon view button"><i class="eye icon" title="Détails" ></i></button></a>
+                    </td>
+                    <td>
+                        <a th:href="${'/projects/delete/' + row.id}"><button class="ui  icon delete button"><i class="trash icon" title="Supprimer" ></i></button></a>
+                        <a th:href="${'/projects/edit/' + row.id}"><button class="ui  icon edit button"><i class="edit icon" title="Modifier"></i></button></a>
+                    </td>
+                </tr>
+
+                </tbody>
+                <tfoot>
+                <tr>
+                    <th colspan="6">
+                        <div class="ui right floated pagination menu">
+                            <a href="/projects/1" class="icon item"><i class="left chevron icon"></i></a>
+                            <a  th:class="${p == currentIndex} ? 'item' : ''"
+                               th:each="p : ${#numbers.sequence(1, endIndex/beginIndex)}"
+                               th:href="${'/projects/' + p}" th:text="${p}"></a>
+                            <a th:href="${'/projects/' + endIndex}" class="icon item"><i class="right chevron icon"></i></a>
+                        </div>
+                    </th>
+
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

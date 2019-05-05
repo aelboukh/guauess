@@ -1,0 +1,62 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+    <title>Catégories</title>
+</head>
+<body>
+<section layout:fragment="header">
+    <div class="ui segment">
+    <div class="ui breadcrumb">
+        <a href="/" class="section">Dashboard</a>
+        <div class="divider"> / </div>
+        <a class="active section">Catégories</a>
+    </div>
+    </div>
+</section>
+<div layout:fragment="content">
+    <div class="pusher">
+        <div class="menu">
+            <h3 class="ui header">Catégories</h3>
+            <!-- content -->
+            <table class="ui celled striped table">
+                <thead>
+                <tr>
+                    <th width="40">ID</th>
+                    <th width="70">Intitule</th>
+                    <th width="70">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="row : ${list}">
+                    <td th:text="${row.id}"></td>
+                    <td th:text="${row.intitule}"></td>
+                    <td>
+                        <a th:href="${'/categories/delete/' + row.id}"><i class="trash icon" title="Supprimer" ></i></a>
+                        <a th:href="${'/categories/edit/' + row.id}"><i class="edit icon" title="Modifier"></i></a>
+                    </td>
+                </tr>
+
+                </tbody>
+                <tfoot>
+                <tr>
+                    <th colspan="6">
+                        <div class="ui right floated pagination menu">
+                            <a href="/categories/1" class="icon item"><i class="left chevron icon"></i></a>
+                            <a th:class="${p == currentIndex} ? 'item' : ''"
+                               th:each="p : ${#numbers.sequence(1, endIndex/beginIndex)}"
+                               th:href="${'/categories/' + p}" th:text="${p}"></a>
+                            <a th:href="${'/categories/' + endIndex}" class="icon item"><i class="right chevron icon"></i></a>
+                        </div>
+                    </th>
+
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+
+    </div>
+
+</div>
+</body>
+</html>
