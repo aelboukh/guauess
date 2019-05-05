@@ -1,0 +1,17 @@
+header.ui.twitter.secondary{
+	background-color: #fff;
+	box-shadow: 0 1px 6px -1px #222;
+	margin-bottom: 2px; 
+}
+
+section#hero{
+	padding: 5em 0.5em;
+	text-align: center;
+	height: 350px;
+}
+#header1{
+	color: white;
+}
+.note{
+	font-size: 14px;
+}
